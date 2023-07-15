@@ -1,0 +1,53 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String s = scan.nextLine();
+      // convert the String to char array 
+        char[] arr=s.toCharArray();
+        String token="";
+        int tokensNumber=0;
+      // count the number of tokens
+        for(int i=0;i<arr.length;i++){
+            if(( (int)arr[i] >=97 && (int)arr[i]<=122 ) || 
+            ( (int)arr[i]>=65 && (int)arr[i]<=90) ) 
+            {
+                token+=arr[i];
+              // to handle the last char
+                if(arr.length -1 ==i){
+                        tokensNumber++;
+                        token="";
+                    }
+            }else {
+                if(token.length()>0){
+                    tokensNumber++;
+                    token="";   
+                }
+            }
+        }
+        System.out.println(tokensNumber);
+        token="";
+      // to get the tokens which the string contains
+        for(int i=0;i<arr.length;i++){
+            if(( (int)arr[i] >=97 && (int)arr[i]<=122 ) || 
+            ( (int)arr[i]>=65 && (int)arr[i]<=90) ) 
+            {
+                token+=arr[i];
+                // to handle the final char of string
+                    if(arr.length -1 ==i){
+                        System.out.println(token);
+                        token="";
+                    }
+            }else {
+                if(token.length()>0){
+                    System.out.println(token);
+                    token="";   
+                }
+            }
+        }
+        scan.close();
+    }
+}
