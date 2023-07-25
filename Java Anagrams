@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class Solution {
+
+    static boolean isAnagram(String a, String b) {
+        // Complete the function
+        
+        a = a.toLowerCase();
+        b = b.toLowerCase();
+        // they must be the same size to check them if they are anagrams or not
+        if(a.length()==b.length()){
+        int frequencyOfStringA=0;
+        int frequencyOfStringB=0;
+        for(int i=(int)'a';i<=(int)'z';i++){
+            for(int j=0;j<a.length();j++){
+                if(a.charAt(j)== (char)i){
+                    frequencyOfStringA++;
+                }
+                if(b.charAt(j)==(char)i){
+                    frequencyOfStringB++;
+                }
+            }
+            if(frequencyOfStringA==frequencyOfStringB){
+                frequencyOfStringA=0;
+                frequencyOfStringB=0;
+            }else{
+                //System.out.println("Not Anagrams");
+                return false;
+            }
+        }
+        return true;
+        }else{
+            return false;
+        }
+    }
+
+  public static void main(String[] args) {
+    
+        Scanner scan = new Scanner(System.in);
+        String a = scan.next();
+        String b = scan.next();
+        scan.close();
+        boolean ret = isAnagram(a, b);
+        System.out.println( (ret) ? "Anagrams" : "Not Anagrams" );
+    }
+}
